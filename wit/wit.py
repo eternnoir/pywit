@@ -121,6 +121,7 @@ class Wit:
         elif json['type'] == 'action':
             action = json['action']
             self.throw_if_action_missing(action)
+            request['action'] = action
             context = self.actions[action](request)
             if context is None:
                 self.logger.warn('missing context - did you forget to return it?')
